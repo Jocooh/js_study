@@ -1,14 +1,18 @@
 const defalutResult = 0;
 let currentResult = defalutResult;
+const $userInput = document.querySelector('#input-number');
 
 function add() {
-  currentResult = currentResult + parseInt(userInput.value);
-  // input에 들어간 값은 기본적으로 문자열로 인식하므로 숫자열로 바꿔준다 || 아니면 +를 붙여서 숫자열로 바꿀 수 있다.
-  outputResult(currentResult,'');
-  //2.출력 창에 내가 적은 숫자가 나오도록 해준다.
-  //outputResult(result,text)
+  const userInputValue = parseInt($userInput.value); //동일하게 쓰인코드 변수로 정해주기 => 고칠때 한번만 정리하면되니까
+  const description = `${currentResult}+${userInputValue}`;
+
+  currentResult = currentResult + userInputValue;
+  outputResult(currentResult, description);
+
+  $userInput.value = '';
+  $userInput.focus();
 }
- 
+
 addBtn.addEventListener('click', add);
 //버튼 클릭시 add함수 실행
 outputResult(currentResult, calculationDescription);
